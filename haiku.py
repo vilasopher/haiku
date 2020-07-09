@@ -149,7 +149,7 @@ possible_args = {
 }
 
 def print_help_message():
-    print('haiku.py is a program that creates a haiku given any file containing only words')
+    print('haiku.py is a program that creates a random haiku out of the words in any text file')
     print('typical usage:')
     print('')
     print('\tpython haiku.py words.txt')
