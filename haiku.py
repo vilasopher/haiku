@@ -98,6 +98,11 @@ def random_haiku(wordlist, shape=[5,7,5], maxtriesperline=1000, maxtriesperword=
 # FUNCTIONS FOR PRINTING HAIKUS #
 #################################
 
+import re
+
+# regex for removing non alphabetical characters
+regex = re.compile('[^a-zA-Z ]')
+
 # pad a haiku line
 def padded(line, length):
     spacesbefore =int((length - len(line))/2)
@@ -114,7 +119,7 @@ def print_haiku(haiku):
 # print a haiku from a file
 def print_haiku_from_file(fname, shape=[5,7,5], maxtriesperline=1000, maxtriesperword=1000):
     fo = open(fname)
-    wordlist = fo.read().split()
+    wordlist = regex.sub('', fo.read()).split()
     haiku = random_haiku(wordlist, shape=shape, maxtriesperline=maxtriesperline, maxtriesperword=maxtriesperword)
     print_haiku(haiku)
 
@@ -143,15 +148,38 @@ possible_args = {
     '-wordtries' : (is_pos_int, 'a positive integer')
 }
 
+def print_help_message():
+    print('haiku.py is a program that creates a haiku given any file containing only words')
+    print('typical usage:')
+    print('')
+    print('\tpython haiku.py words.txt')
+    print('')
+    print('options:')
+    print('')
+    print('\t-shape        is the shape of the haiku')
+    print('\t              default is -shape [5,7,5]')
+    print('')
+    print('\t-linetries    is the number of invalid lines before haiku.py gives up')
+    print('\t              default is -linetries 1000')
+    print('')
+    print('\t-wordtries    is the number of invalid words before haiku.py gives up')
+    print('\t              default is -wordtries 1000')
+    print('')
+    print('\t-help         prints this dialog')
+
 # main code block
 if __name__ == '__main__':
-    arguments = sys.argv[1:]
+    arguments = [ x.lower() for x in sys.argv[1:] ]
 
     arg_dict = {
         'shape' : [5,7,5], 
         '-linetries' : 1000,
         '-wordtries' : 1000
     }
+
+    if '-help' in arguments or 'help' in arguments or '--help' in arguments:
+        print_help_message()
+        sys.exit()
 
     for arg in possible_args:
         if arg in arguments:
