@@ -1,4 +1,5 @@
-#haiku
+# haiku
+
 haiku.py is a program that creates a random haiku out of the words in any text file
 
 typical usage:
