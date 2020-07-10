@@ -19,4 +19,4 @@ options:
 
 	-help         prints this dialog
 
-this depends on the CMUDict python library
+this program depends on the CMUDict python library
