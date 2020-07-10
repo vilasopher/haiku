@@ -169,7 +169,7 @@ def print_help_message():
 
 # main code block
 if __name__ == '__main__':
-    arguments = [ x.lower() for x in sys.argv[1:] ]
+    arguments = sys.argv[1:]
 
     arg_dict = {
         'shape' : [5,7,5], 
@@ -177,7 +177,9 @@ if __name__ == '__main__':
         '-wordtries' : 1000
     }
 
-    if '-help' in arguments or 'help' in arguments or '--help' in arguments:
+    arguments_lower = [ x.lower() for x in arguments ] 
+
+    if '-help' in arguments_lower or 'help' in arguments_lower or '--help' in arguments_lower:
         print_help_message()
         sys.exit()
 
