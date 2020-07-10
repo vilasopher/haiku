@@ -18,3 +18,5 @@ options:
 	              default is -wordtries 1000
 
 	-help         prints this dialog
+
+this depends on the CMUDict python library
