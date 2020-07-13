@@ -205,7 +205,7 @@ if __name__ == '__main__':
                 sys.exit()
 
     if len(arguments) > 1:
-        print('Error: extraneous arguments given.')
+        print('Error: extraneous arguments given.\nType \'python haiku.py -help\' for help.')
         sys.exit()
 
     filename = arguments[0]
