@@ -172,7 +172,7 @@ if __name__ == '__main__':
     arguments = sys.argv[1:]
 
     arg_dict = {
-        'shape' : [5,7,5], 
+        '-shape' : [5,7,5], 
         '-linetries' : 1000,
         '-wordtries' : 1000
     }
@@ -210,4 +210,4 @@ if __name__ == '__main__':
 
     filename = arguments[0]
 
-    print_haiku_from_file(filename, shape=arg_dict['shape'], maxtriesperline=arg_dict['-linetries'], maxtriesperword=arg_dict['-wordtries'])
+    print_haiku_from_file(filename, shape=arg_dict['-shape'], maxtriesperline=arg_dict['-linetries'], maxtriesperword=arg_dict['-wordtries'])
